@@ -10,6 +10,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @signed_count = @event.event_signups.count
+    @signed_users = @event.event_signups.joins(:user).map(&:user)
   end
 
   # GET /events/new

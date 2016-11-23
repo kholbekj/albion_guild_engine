@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   mount Thredded::Engine => '/forum'
   resources :users, only: [:show]
   resources :events
-  get '/calendar', to: 'home#calendar'
+  get '/calendar', to: 'home#calendar', as: 'calendar'
+  get '/event_signups/signup/:event_id', to: 'event_signups#signup', as: 'event_signup'
 
 end

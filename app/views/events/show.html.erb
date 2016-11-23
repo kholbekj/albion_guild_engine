@@ -7,13 +7,26 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <%= @event.start_time.to_formatted_s(:short) %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= @event.end_time.to_formatted_s(:short) %>
 </p>
 
+<% if @signed_count > 0 %>
+  <p>Signed members:</p>
+  <ul>
+    <% @signed_users.each do |user| %>
+      <li><%= user.display_name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="event-signup">
+  <%= link_to current_user.already_signed_up?(@event) ? "Un-sign" : "Sign up", event_signup_path(event_id: @event.id) %>
+</div>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', calendar_path %>

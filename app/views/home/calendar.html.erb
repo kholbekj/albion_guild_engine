@@ -1,11 +1,13 @@
 <%= month_calendar events: @events do |date, events| %>
-  <%= date %>
+  <span class="day"><%= date.day %></span>
 
   <% events.each do |event| %>
     <div>
-      <%= event.name %>
+      <%= link_to event.name, event %>
     </div>
   <% end %>
 <% end %>
 
-<%= link_to "New event", new_event_path %>
+<% if user_signed_in? %>
+  <%= link_to "New event", new_event_path %>
+<% end %>
