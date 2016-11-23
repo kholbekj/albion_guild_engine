@@ -24,9 +24,11 @@
   </ul>
 <% end %>
 
-<div class="event-signup">
-  <%= link_to current_user.already_signed_up?(@event) ? "Un-sign" : "Sign up", event_signup_path(event_id: @event.id) %>
-</div>
+<% if user_signed_in? %>
+  <div class="event-signup">
+    <%= link_to current_user.already_signed_up?(@event) ? "Un-sign" : "Sign up", event_signup_path(event_id: @event.id) %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', calendar_path %>
