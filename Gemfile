@@ -54,3 +54,4 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'thredded'
 gem 'rails-timeago'
+gem "simple_calendar", "~> 2.0"
